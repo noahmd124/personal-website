@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noah MD – Personal & Social Hub</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 3rem 2rem;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #2e7d32;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    nav a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    nav a:hover {
+      background: rgba(46, 125, 50, 0.1);
+      transform: translateY(-3px);
+    }
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: fadeUp 1s ease forwards;
+      opacity: 0;
+    }
+    section.visible {
+      opacity: 1;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #1b5e20;
+    }
+    section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: auto;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .social-links a {
+      display: inline-block;
+      padding: 1rem;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .social-links a:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    @keyframes fadeInDown {
+      from {opacity:0; transform: translateY(-20px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to {opacity:1;}
+    }
+    @keyframes fadeUp {
+      from {opacity:0; transform: translateY(20px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Noah Macarthur Davenport</h1>
+    <p>Author • Photographer • Creator</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#socials">Social Media</a>
+    <a href="#portfolio">Photography</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi, I'm Noah — a storyteller, visual artist, and aspiring influencer. I create captivating content, write exciting stories, and capture the beauty of the world through my lens.</p>
+  </section>
+
+  <section id="socials">
+    <h2>Follow Me</h2>
+    <p>Find me across all my favourite platforms.</p>
+    <div class="social-links">
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" width="30" alt="Instagram" /></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" width="30" alt="TikTok" /></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" width="30" alt="YouTube" /></a>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2>Photography Portfolio</h2>
+    <p>A showcase of my favourite shots — from candid street captures to breathtaking landscapes. (Gallery coming soon!)</p>
+  </section>
+
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <p>Want to collaborate, commission, or just say hi? Drop me a message!</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Noah Macarthur Davenport. All Rights Reserved.
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const options = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, options);
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
