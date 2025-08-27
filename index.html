@@ -105,9 +105,22 @@
     .marquee b{opacity:.9}
     @keyframes marquee{from{transform: translateX(0)} to{transform: translateX(-50%)} }
 
-    /* GALLERY */
-    .masonry{columns: 1; column-gap:16px}
-    .masonry img{width:100%; border-radius:14px; margin:0 0 16px; break-inside:avoid; border:1px solid var(--border)}
+   /* GALLERY */
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-auto-rows: 200px; /* height of each row */
+  gap: 16px; /* spacing between images */
+}
+
+.masonry img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop images nicely */
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
 
     /* CTA BAND */
     .cta-band{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; align-items:center; background:linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.24)); border:1px solid rgba(167,139,250,.35); padding:24px; border-radius:24px}
