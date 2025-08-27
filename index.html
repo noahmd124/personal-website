@@ -1,166 +1,515 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noah MD – Personal & Social Hub</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Noah MD — Photographer • Short Films • Influencer • App Developer</title>
+  <meta name="description" content="The modern, gradient portfolio of Noah MD — photography, short films, social content, and app projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg: #0b1020;
+      --fg: #eef2ff;
+      --muted: #a5b4fc;
+      --accent: #8b5cf6;
+      --accent-2: #06b6d4;
+      --accent-3: #22c55e;
+      --card: rgba(255,255,255,.06);
+      --glass: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.15);
+      --shadow: 0 20px 40px rgba(0,0,0,.35);
+      --radius-xl: 24px;
+      --radius-2xl: 32px;
+      --maxw: 1200px;
+      --pad: clamp(16px, 3vw, 32px);
     }
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-      color: #333;
-      overflow-x: hidden;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--fg); background: radial-gradient(1200px 800px at 10% -10%, #1f1447 0%, rgba(31,20,71,0) 60%),
+      radial-gradient(1000px 700px at 110% 10%, #003b5a 0%, rgba(0,59,90,0) 60%),
+      linear-gradient(180deg, #0b1020 0%, #0a0f1b 60%, #070b16 100%);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
     }
-    header {
-      padding: 3rem 2rem;
-      text-align: center;
-      animation: fadeInDown 1s ease-in-out;
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .gradient-text{background: linear-gradient(90deg, #a78bfa, #22d3ee, #34d399); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 var(--pad)}
+
+    /* NAV */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:linear-gradient(180deg, rgba(10,12,24,.85), rgba(10,12,24,.65)); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px}
+    .logo{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
+    .logo svg{filter: drop-shadow(0 6px 10px rgba(139,92,246,.35))}
+    nav a{padding:10px 14px; border-radius:12px; border:1px solid transparent}
+    nav a:hover{border-color:var(--border); background:var(--card)}
+
+    /* HERO */
+    .hero{position:relative; padding:calc(72px + 6vh) 0 64px}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; align-items:center; gap: clamp(24px, 4vw, 56px)}
+    .badge{display:inline-flex; align-items:center; gap:10px; font-weight:600; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:var(--card)}
+    .badge .dot{width:8px; height:8px; border-radius:50%; background:conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3))}
+    h1{font-family:"Plus Jakarta Sans", Inter, sans-serif; font-weight:900; font-size: clamp(36px, 6vw, 64px); line-height:1.05; margin:16px 0}
+    .lead{font-size:clamp(16px, 2.4vw, 20px); color:#d0d6ff; max-width:60ch}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:14px 18px; border-radius:16px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); box-shadow: var(--shadow); font-weight:700}
+    .btn.primary{background: linear-gradient(135deg, rgba(167,139,250,.3), rgba(34,211,238,.25)); border-color: rgba(167,139,250,.55)}
+    .btn:hover{transform: translateY(-1px); transition: .2s ease}
+    .stat-row{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:28px}
+    .stat{background:var(--glass); border:1px solid var(--border); padding:14px; border-radius:18px; text-align:center}
+    .stat b{font-size:22px}
+    .hero-art{position:relative}
+    .card-stack{position:relative; perspective:1200px; height:100%}
+    .card{position:absolute; inset:auto; right:0; left:0; margin:auto; width:min(480px, 88%); aspect-ratio: 4/5; border-radius:var(--radius-2xl); background:radial-gradient(60% 60% at 70% 20%, rgba(255,255,255,.16), rgba(255,255,255,.06) 60%), linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border:1px solid var(--border); box-shadow: var(--shadow); overflow:hidden; transform-style:preserve-3d}
+    .card:nth-child(1){transform: rotate(-6deg) translate3d(-16px, 0, 0)}
+    .card:nth-child(2){transform: rotate(6deg) translate3d(16px, 24px, 0)}
+    .card:nth-child(3){transform: rotate(-2deg) translate3d(0, 48px, 0)}
+    .card img{width:100%; height:100%; object-fit:cover; filter:saturate(110%)}
+    .glow{position:absolute; inset: -40% -30%; background: radial-gradient(closest-side, rgba(139,92,246,.35), rgba(34,211,238,.25), transparent 60%); filter: blur(40px); z-index:-1}
+
+    /* SECTION WRAPPER */
+    section{padding:80px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px}
+    .section-head h2{font-family:"Plus Jakarta Sans"; font-size: clamp(28px, 4vw, 40px); margin:0}
+    .kicker{letter-spacing:.18em; text-transform:uppercase; font-weight:800; font-size:12px; color:var(--muted)}
+
+    /* GRID CARDS */
+    .grid{display:grid; gap:16px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-4{grid-template-columns: repeat(4, 1fr)}
+    .card-ui{background:var(--glass); border:1px solid var(--border); border-radius:20px; overflow:hidden}
+    .card-ui .media{aspect-ratio:16/10; background:linear-gradient(135deg, rgba(167,139,250,.15), rgba(34,211,238,.12))}
+    .card-ui .body{padding:16px}
+    .pill{display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.05)}
+
+    /* FEATURE STRIP */
+    .features{display:grid; grid-template-columns: repeat(4, 1fr); gap:16px}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border:1px solid var(--border); border-radius:20px; padding:18px}
+    .feature h3{margin:8px 0 6px}
+    .feature p{margin:0; color:#cbd5ff}
+
+    /* TIMELINE */
+    .timeline{position:relative; margin-top:12px}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, rgba(167,139,250,.35), rgba(34,211,238,.35))}
+    .t-item{display:grid; grid-template-columns: 24px 1fr; gap:16px; margin-bottom:18px}
+    .t-dot{width:18px; height:18px; margin:3px 0; border-radius:50%; background:radial-gradient(circle at 30% 30%, #a78bfa, #22d3ee); box-shadow:0 0 0 4px rgba(167,139,250,.15)}
+    .t-card{background:var(--glass); border:1px solid var(--border); border-radius:16px; padding:12px 14px}
+
+    /* MARQUEE */
+    .marquee{overflow:hidden; border:1px solid var(--border); border-radius:18px; background:var(--card)}
+    .marquee-track{display:flex; gap:48px; padding:14px; animation: marquee 28s linear infinite}
+    .marquee b{opacity:.9}
+    @keyframes marquee{from{transform: translateX(0)} to{transform: translateX(-50%)} }
+
+    /* GALLERY */
+    .masonry{columns: 1; column-gap:16px}
+    .masonry img{width:100%; border-radius:14px; margin:0 0 16px; break-inside:avoid; border:1px solid var(--border)}
+
+    /* CTA BAND */
+    .cta-band{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; align-items:center; background:linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.24)); border:1px solid rgba(167,139,250,.35); padding:24px; border-radius:24px}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border); background:rgba(0,0,0,.25); padding:48px 0}
+    .foot-grid{display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:16px}
+    .muted{color:#cbd5ff}
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px){
+      .hero-grid, .cta-band{grid-template-columns: 1fr}
+      .hero-art{order:-1}
+      .grid.cols-3{grid-template-columns: 1fr 1fr}
+      .grid.cols-4{grid-template-columns: 1fr 1fr}
+      .features{grid-template-columns: 1fr 1fr}
+      .foot-grid{grid-template-columns: 1fr 1fr}
+      .stat-row{grid-template-columns: repeat(2, 1fr)}
     }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #2e7d32;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #555;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    nav a {
-      text-decoration: none;
-      color: #2e7d32;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    nav a:hover {
-      background: rgba(46, 125, 50, 0.1);
-      transform: translateY(-3px);
-    }
-    section {
-      padding: 4rem 2rem;
-      text-align: center;
-      animation: fadeUp 1s ease forwards;
-      opacity: 0;
-    }
-    section.visible {
-      opacity: 1;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #1b5e20;
-    }
-    section p {
-      font-size: 1.1rem;
-      color: #555;
-      max-width: 600px;
-      margin: auto;
-    }
-    .social-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .social-links a {
-      display: inline-block;
-      padding: 1rem;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-    .social-links a:hover {
-      transform: scale(1.1);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-    @keyframes fadeInDown {
-      from {opacity:0; transform: translateY(-20px);}
-      to {opacity:1; transform: translateY(0);}
-    }
-    @keyframes fadeIn {
-      from {opacity:0;}
-      to {opacity:1;}
-    }
-    @keyframes fadeUp {
-      from {opacity:0; transform: translateY(20px);}
-      to {opacity:1; transform: translateY(0);}
+    @media (max-width: 640px){
+      nav{display:none}
+      .grid.cols-3, .grid.cols-4{grid-template-columns: 1fr}
+      .features{grid-template-columns: 1fr}
+      .foot-grid{grid-template-columns: 1fr}
+      .stat-row{grid-template-columns: 1fr 1fr}
+      .masonry{columns: 1}
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Noah Macarthur Davenport</h1>
-    <p>Author • Photographer • Creator</p>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="Noah MD Home">
+        <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+          <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#g1)"/>
+          <path d="M18 44V20l10 12 10-12v24" stroke="#0b1020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Noah <span class="gradient-text">MD</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#films">Short Films</a>
+        <a href="#social">Social</a>
+        <a href="#apps">Apps</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#socials">Social Media</a>
-    <a href="#portfolio">Photography</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge"><span class="dot"></span> Hey, I'm Noah — 12 y/o creator from the UK 🇬🇧</span>
+          <h1>Photographer, Short Film Maker, <span class="gradient-text">Social Media</span> Influencer & App Developer</h1>
+          <p class="lead">I tell stories with cameras, code, and creativity. From cinematic mini films to helpful mobile apps, I love building things that make people smile and go “whoa!”. 😁</p>
+          <div class="cta">
+            <a class="btn primary" href="#work">See My Work</a>
+            <a class="btn" href="#contact">Let's Collab</a>
+          </div>
+          <div class="stat-row" role="list" aria-label="Stats">
+            <div class="stat" role="listitem"><b>150k+</b><br><small>Views across socials</small></div>
+            <div class="stat" role="listitem"><b>25+</b><br><small>Photo shoots</small></div>
+            <div class="stat" role="listitem"><b>10</b><br><small>Short films</small></div>
+            <div class="stat" role="listitem"><b>3</b><br><small>Apps launched</small></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="card-stack" aria-hidden="true">
+            <div class="card"><img alt="Noah's moody street photo" src="https://images.unsplash.com/photo-1520975922284-9d656a3cde49?q=80&w=1200&auto=format&fit=crop"/></div>
+            <div class="card"><img alt="Behind the scenes with camera" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop"/></div>
+            <div class="card"><img alt="Laptop with code app design" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"/></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hi, I'm Noah — a storyteller, visual artist, and aspiring influencer. I create captivating content, write exciting stories, and capture the beauty of the world through my lens.</p>
-  </section>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">About</div>
+            <h2>What I'm about</h2>
+          </div>
+        </div>
 
-  <section id="socials">
-    <h2>Follow Me</h2>
-    <p>Find me across all my favourite platforms.</p>
-    <div class="social-links">
-      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" width="30" alt="Instagram" /></a>
-      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" width="30" alt="TikTok" /></a>
-      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" width="30" alt="YouTube" /></a>
-    </div>
-  </section>
+        <div class="features" role="list">
+          <article class="feature" role="listitem">
+            <div class="pill">📸 Photography</div>
+            <h3>Portraits, street & product</h3>
+            <p>I shoot with a Canon EOS 1300D and experiment with light, texture, and motion for bold looks.
+            </p>
+          </article>
+          <article class="feature" role="listitem">
+            <div class="pill">🎬 Short Films</div>
+            <h3>Stories under 15 minutes</h3>
+            <p>Fast-moving mini films you can feel, planned, shot & edited with a tiny crew and big energy.</p>
+          </article>
+          <article class="feature" role="listitem">
+            <div class="pill">📱 Apps</div>
+            <h3>Helpful, friendly tools</h3>
+            <p>From <b>DreamScribe</b> for young authors to <b>Safe2Taste</b> for allergens — I love building for people.</p>
+          </article>
+          <article class="feature" role="listitem">
+            <div class="pill">📣 Social</div>
+            <h3>Shorts that pop</h3>
+            <p>Trendy edits, clear hooks, and fun storytelling. Clean captions. Always positive vibes. ✨</p>
+          </article>
+        </div>
 
-  <section id="portfolio">
-    <h2>Photography Portfolio</h2>
-    <p>A showcase of my favourite shots — from candid street captures to breathtaking landscapes. (Gallery coming soon!)</p>
-  </section>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-dot" aria-hidden="true"></div>
+            <div class="t-card">
+              <b>2024 → Started short films</b><br>
+              Wrote, shot, and edited first series of micro stories with two iPhones and a mic. Learned DaVinci Resolve.
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-dot" aria-hidden="true"></div>
+            <div class="t-card">
+              <b>2025 → Launched DreamScribe</b><br>
+              Built an app concept to guide kids into writing their first novel — with a clean, liquid-glass design.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Get In Touch</h2>
-    <p>Want to collaborate, commission, or just say hi? Drop me a message!</p>
-  </section>
+    <!-- WORK / PHOTOGRAPHY -->
+    <section id="work">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Photography</div>
+            <h2>Selected shoots & edits</h2>
+          </div>
+          <a class="btn" href="#contact">Book a shoot</a>
+        </div>
+
+        <div class="masonry" aria-label="Photo gallery">
+          <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=1200&auto=format&fit=crop" alt="City portrait in neon lights"/>
+          <img src="https://images.unsplash.com/photo-1500043357865-c6b8827edf26?q=80&w=1200&auto=format&fit=crop" alt="Skater silhouette at sunset"/>
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" alt="Running through waves long exposure"/>
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Product photo on glossy surface"/>
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1200&auto=format&fit=crop" alt="Street photo in the rain"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHORT FILMS -->
+    <section id="films">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Short Films</div>
+            <h2>Mini movies with punch</h2>
+          </div>
+          <a class="btn" href="#contact">Pitch a concept</a>
+        </div>
+
+        <div class="grid cols-3">
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop" alt="Night city with car lights"/></div>
+            <div class="body">
+              <div class="pill">Thriller • 3:12</div>
+              <h3>After Hours</h3>
+              <p>A courier races the clock through a neon maze. One delivery. One twist.</p>
+            </div>
+          </article>
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1498715884428-7a5f8d7d2ced?q=80&w=1200&auto=format&fit=crop" alt="Forest morning fog"/></div>
+            <div class="body">
+              <div class="pill">Drama • 4:45</div>
+              <h3>The Note</h3>
+              <p>A lost letter finds its reader at the exact wrong time — or the perfect one.</p>
+            </div>
+          </article>
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1498661367879-cabaf24e08a0?q=80&w=1200&auto=format&fit=crop" alt="Sunny kitchen with pancakes"/></div>
+            <div class="body">
+              <div class="pill">Comedy • 2:30</div>
+              <h3>Battery Low</h3>
+              <p>A phone dies at the worst moment. Chaos, creativity, and pancakes ensue.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="marquee" aria-label="Tools I use">
+          <div class="marquee-track">
+            <span>🎥 Canon EOS 1300D</span>
+            <span>📱 iPhone 11 (x2)</span>
+            <span>🎧 External mic to iPad</span>
+            <span>🎞️ DaVinci Resolve</span>
+            <span>💡 Natural light + DIY rigs</span>
+            <span>🎬 Storyboards & beat sheets</span>
+            <span>🎥 Canon EOS 1300D</span>
+            <span>📱 iPhone 11 (x2)</span>
+            <span>🎧 External mic to iPad</span>
+            <span>🎞️ DaVinci Resolve</span>
+            <span>💡 Natural light + DIY rigs</span>
+            <span>🎬 Storyboards & beat sheets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL -->
+    <section id="social">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Social Media</div>
+            <h2>Content that hooks in 3 seconds</h2>
+          </div>
+          <a class="btn" href="#contact">Hire for UGC</a>
+        </div>
+
+        <div class="grid cols-4">
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1548613053-22087a1b21a5?q=80&w=1200&auto=format&fit=crop" alt="Sneaker product shot"/></div>
+            <div class="body">
+              <div class="pill">UGC • Product</div>
+              <h3>Clean sneaker reveal</h3>
+              <p>Snappy cuts, text overlays, shiny reflections — scroll-stopping in 12 seconds.</p>
+            </div>
+          </article>
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1520975922284-9d656a3cde49?q=80&w=1200&auto=format&fit=crop" alt="Street portrait"/></div>
+            <div class="body">
+              <div class="pill">Reel • Portrait</div>
+              <h3>Before/after color grade</h3>
+              <p>Simple lighting → cinematic tones. Quick LUT swap and curve tweaks.</p>
+            </div>
+          </article>
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop" alt="Desk with phone recording"/></div>
+            <div class="body">
+              <div class="pill">Tutorial • 30s</div>
+              <h3>iPhone B‑roll hack</h3>
+              <p>How to get buttery slider shots with stuff you already have at home.</p>
+            </div>
+          </article>
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="Laptop with app UI"/></div>
+            <div class="body">
+              <div class="pill">Promo • App</div>
+              <h3>DreamScribe sneak peek</h3>
+              <p>Quick tour of the Book Studio, badges, and AI helper — kid-friendly vibes.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPS -->
+    <section id="apps">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Apps</div>
+            <h2>Things I build for people</h2>
+          </div>
+          <a class="btn" href="#contact">Request a feature</a>
+        </div>
+
+        <div class="grid cols-3">
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1599507592091-599f1f3adf3f?q=80&w=1200&auto=format&fit=crop" alt="Notebook and pen for writing"/></div>
+            <div class="body">
+              <div class="pill">Education</div>
+              <h3>DreamScribe</h3>
+              <p>Guides young authors through writing their first novel with prompts, an AI planner, and achievements.</p>
+            </div>
+          </article>
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1544211412-2a6d4c78fb6b?q=80&w=1200&auto=format&fit=crop" alt="Grocery shelves"/></div>
+            <div class="body">
+              <div class="pill">Health</div>
+              <h3>Safe2Taste</h3>
+              <p>Scan foods to detect allergens using Open Food Facts — quick and friendly UI for families.</p>
+            </div>
+          </article>
+          <article class="card-ui">
+            <div class="media"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop" alt="Phone with social app"/></div>
+            <div class="body">
+              <div class="pill">Social</div>
+              <h3>Nomada Tools</h3>
+              <p>Simple creators' toolkit: caption ideas, color palettes, and a content planner.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-band" aria-label="Work together">
+          <div>
+            <h3 style="margin:0 0 6px">Got a project? Let's make it pop. 🚀</h3>
+            <p class="muted" style="margin:0">I collaborate with brands, schools, and local groups. Photography, UGC, app concepts, and short films.</p>
+          </div>
+          <div class="cta"><a class="btn primary" href="#contact">Start a chat</a><a class="btn" href="#about">More about me</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Contact</div>
+            <h2>Say hi 👋</h2>
+          </div>
+        </div>
+        <div class="grid cols-3">
+          <div class="card-ui" style="grid-column: span 2">
+            <div class="body">
+              <p class="muted">Want photos, UGC, or an app idea built? Send a message — Mum checks my inbox. 😊</p>
+              <form action="mailto:hello@example.com" method="post" enctype="text/plain">
+                <label for="name">Name</label><br>
+                <input id="name" name="name" required style="width:100%; margin:6px 0 12px; padding:14px; border-radius:14px; border:1px solid var(--border); background:var(--card); color:var(--fg)">
+                <label for="email">Email</label><br>
+                <input id="email" name="email" type="email" required style="width:100%; margin:6px 0 12px; padding:14px; border-radius:14px; border:1px solid var(--border); background:var(--card); color:var(--fg)">
+                <label for="msg">Message</label><br>
+                <textarea id="msg" name="message" rows="5" required style="width:100%; margin:6px 0 12px; padding:14px; border-radius:14px; border:1px solid var(--border); background:var(--card); color:var(--fg)"></textarea>
+                <button class="btn primary" type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+          <div class="card-ui">
+            <div class="body">
+              <h3>Links</h3>
+              <p class="muted">Follow along for behind‑the‑scenes and new drops.</p>
+              <ul style="list-style:none; padding:0; margin:0; display:grid; gap:10px">
+                <li><a class="btn" href="#" aria-label="Instagram">📷 Instagram</a></li>
+                <li><a class="btn" href="#" aria-label="YouTube">▶️ YouTube</a></li>
+                <li><a class="btn" href="#" aria-label="TikTok">🎵 TikTok</a></li>
+                <li><a class="btn" href="#" aria-label="GitHub">💻 GitHub</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Noah Macarthur Davenport. All Rights Reserved.
+    <div class="container foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:10px">
+          <svg width="26" height="26" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+            </defs>
+            <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#g2)"/>
+            <path d="M18 44V20l10 12 10-12v24" stroke="#0b1020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <b>Noah MD</b>
+        </div>
+        <p class="muted">Bristol‑based creator making photos, films, and friendly apps. Available for collabs and commissions.</p>
+      </div>
+      <div>
+        <b>Explore</b>
+        <ul style="list-style:none; padding:0; margin:10px 0; display:grid; gap:6px">
+          <li><a href="#about" class="muted">About</a></li>
+          <li><a href="#work" class="muted">Photography</a></li>
+          <li><a href="#films" class="muted">Short Films</a></li>
+          <li><a href="#apps" class="muted">Apps</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Contact</b>
+        <ul style="list-style:none; padding:0; margin:10px 0; display:grid; gap:6px">
+          <li class="muted">Email: hello@example.com</li>
+          <li class="muted">City: Bristol, UK</li>
+        </ul>
+      </div>
+      <div>
+        <b>Credits</b>
+        <p class="muted">Design & code by Noah MD. Stock photos via Unsplash placeholders — swap with your own shots! ✨</p>
+      </div>
+    </div>
+    <div class="container" style="margin-top:24px; border-top:1px solid var(--border); padding-top:16px; display:flex; justify-content:space-between; gap:12px">
+      <small class="muted">© <span id="year">2025</span> Noah MD. All rights reserved.</small>
+      <small class="muted"><a class="muted" href="#top">Back to top ↑</a></small>
+    </div>
   </footer>
 
   <script>
-    const sections = document.querySelectorAll('section');
-    const options = { threshold: 0.2 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, options);
-    sections.forEach(section => observer.observe(section));
+    // Updates the copyright year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
