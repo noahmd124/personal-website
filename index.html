@@ -1,548 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Noah MD</title>
-  <meta name="description" content="Portfolio of Noah MD — Photography & Web Development." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah MD - Web Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ---------- Reset & Body ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; }
 
-    :root{
-      --bg: #0b1020;
-      --fg: #eef2ff;
-      --muted: #a5b4fc;
-      --accent: #8b5cf6;
-      --accent-2: #06b6d4;
-      --accent-3: #22c55e;
-      --card: rgba(255,255,255,.06);
-      --glass: rgba(255,255,255,.08);
-      --border: rgba(255,255,255,.15);
-      --shadow: 0 20px 40px rgba(0,0,0,.35);
-      --radius-xl: 24px;
-      --radius-2xl: 32px;
-      --maxw: 1200px;
-      --pad: clamp(16px, 3vw, 32px);
+    /* ---------- Header ---------- */
+    header {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; color:var(--fg); background: radial-gradient(1200px 800px at 10% -10%, #1f1447 0%, rgba(31,20,71,0) 60%),
-      radial-gradient(1000px 700px at 110% 10%, #003b5a 0%, rgba(0,59,90,0) 60%),
-      linear-gradient(180deg, #0b1020 0%, #0a0f1b 60%, #070b16 100%);
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height:1.6;
-      overflow-x:hidden;
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    .gradient-text{background: linear-gradient(90deg, #a78bfa, #22d3ee, #34d399); -webkit-background-clip:text; background-clip:text; color:transparent}
-    .container{max-width:var(--maxw); margin:0 auto; padding:0 var(--pad)}
-
-    /* NAV */
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:linear-gradient(180deg, rgba(10,12,24,.85), rgba(10,12,24,.65)); border-bottom:1px solid var(--border)}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px}
-    .logo{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
-    .logo svg{filter: drop-shadow(0 6px 10px rgba(139,92,246,.35))}
-    nav a{padding:10px 14px; border-radius:12px; border:1px solid transparent}
-    nav a:hover{border-color:var(--border); background:var(--card)}
-
-    /* HERO */
-    .hero{position:relative; padding:calc(72px + 6vh) 0 64px}
-    .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; align-items:center; gap: clamp(24px, 4vw, 56px)}
-    .badge{display:inline-flex; align-items:center; gap:10px; font-weight:600; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:var(--card)}
-    .badge .dot{width:8px; height:8px; border-radius:50%; background:conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3))}
-    h1{font-family:"Plus Jakarta Sans", Inter, sans-serif; font-weight:900; font-size: clamp(36px, 6vw, 64px); line-height:1.05; margin:16px 0}
-    .lead{font-size:clamp(16px, 2.4vw, 20px); color:#d0d6ff; max-width:60ch}
-    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:14px 18px; border-radius:16px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); box-shadow: var(--shadow); font-weight:700}
-    .btn.primary{background: linear-gradient(135deg, rgba(167,139,250,.3), rgba(34,211,238,.25)); border-color: rgba(167,139,250,.55)}
-    .btn:hover{transform: translateY(-1px); transition: .2s ease}
-    .stat-row{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:28px}
-    .stat{background:var(--glass); border:1px solid var(--border); padding:14px; border-radius:18px; text-align:center}
-    .stat b{font-size:22px}
-    .hero-art{position:relative}
-    .card-stack{position:relative; perspective:1200px; height:100%}
-    .card{position:absolute; inset:auto; right:0; left:0; margin:auto; width:min(480px, 88%); aspect-ratio: 4/5; border-radius:var(--radius-2xl); background:radial-gradient(60% 60% at 70% 20%, rgba(255,255,255,.16), rgba(255,255,255,.06) 60%), linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border:1px solid var(--border); box-shadow: var(--shadow); overflow:hidden; transform-style:preserve-3d}
-    .card:nth-child(1){transform: rotate(-6deg) translate3d(-16px, 0, 0)}
-    .card:nth-child(2){transform: rotate(6deg) translate3d(16px, 24px, 0)}
-    .card:nth-child(3){transform: rotate(-2deg) translate3d(0, 48px, 0)}
-    .card img{width:100%; height:100%; object-fit:cover; filter:saturate(110%)}
-    .glow{position:absolute; inset: -40% -30%; background: radial-gradient(closest-side, rgba(139,92,246,.35), rgba(34,211,238,.25), transparent 60%); filter: blur(40px); z-index:-1}
-
-    /* SECTION WRAPPER */
-    section{padding:80px 0}
-    .section-head{display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px}
-    .section-head h2{font-family:"Plus Jakarta Sans"; font-size: clamp(28px, 4vw, 40px); margin:0}
-    .kicker{letter-spacing:.18em; text-transform:uppercase; font-weight:800; font-size:12px; color:var(--muted)}
-
-    /* GRID CARDS */
-    .grid{display:grid; gap:16px}
-    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
-    .grid.cols-4{grid-template-columns: repeat(4, 1fr)}
-    .card-ui{background:var(--glass); border:1px solid var(--border); border-radius:20px; overflow:hidden}
-    .card-ui .media{aspect-ratio:16/10; background:linear-gradient(135deg, rgba(167,139,250,.15), rgba(34,211,238,.12))}
-    .card-ui .body{padding:16px}
-    .pill{display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.05)}
-
-    /* FEATURE STRIP */
-    .features{display:grid; grid-template-columns: repeat(4, 1fr); gap:16px}
-    .feature{background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border:1px solid var(--border); border-radius:20px; padding:18px}
-    .feature h3{margin:8px 0 6px}
-    .feature p{margin:0; color:#cbd5ff}
-
-    /* TIMELINE */
-    .timeline{position:relative; margin-top:12px}
-    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, rgba(167,139,250,.35), rgba(34,211,238,.35))}
-    .t-item{display:grid; grid-template-columns: 24px 1fr; gap:16px; margin-bottom:18px}
-    .t-dot{width:18px; height:18px; margin:3px 0; border-radius:50%; background:radial-gradient(circle at 30% 30%, #a78bfa, #22d3ee); box-shadow:0 0 0 4px rgba(167,139,250,.15)}
-    .t-card{background:var(--glass); border:1px solid var(--border); border-radius:16px; padding:12px 14px}
-
-    /* MARQUEE */
-    .marquee{overflow:hidden; border:1px solid var(--border); border-radius:18px; background:var(--card)}
-    .marquee-track{display:flex; gap:48px; padding:14px; animation: marquee 28s linear infinite}
-    .marquee b{opacity:.9}
-    @keyframes marquee{from{transform: translateX(0)} to{transform: translateX(-50%)} }
-
-   /* GALLERY */
-.masonry {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  grid-auto-rows: 200px; /* height of each row */
-  gap: 16px; /* spacing between images */
-}
-
-.masonry img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* crop images nicely */
-  border-radius: 14px;
-  border: 1px solid var(--border);
-}
-
-
-    /* CTA BAND */
-    .cta-band{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; align-items:center; background:linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.24)); border:1px solid rgba(167,139,250,.35); padding:24px; border-radius:24px}
-
-    /* FOOTER */
-    footer{border-top:1px solid var(--border); background:rgba(0,0,0,.25); padding:48px 0}
-    .foot-grid{display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:16px}
-    .muted{color:#cbd5ff}
-
-    /* RESPONSIVE */
-    @media (max-width: 1000px){
-      .hero-grid, .cta-band{grid-template-columns: 1fr}
-      .hero-art{order:-1}
-      .grid.cols-3{grid-template-columns: 1fr 1fr}
-      .grid.cols-4{grid-template-columns: 1fr 1fr}
-      .features{grid-template-columns: 1fr 1fr}
-      .foot-grid{grid-template-columns: 1fr 1fr}
-      .stat-row{grid-template-columns: repeat(2, 1fr)}
-    }
-    @media (max-width: 640px){
-      nav{display:none}
-      .grid.cols-3, .grid.cols-4{grid-template-columns: 1fr}
-      .features{grid-template-columns: 1fr}
-      .foot-grid{grid-template-columns: 1fr}
-      .stat-row{grid-template-columns: 1fr 1fr}
-      .masonry{columns: 1}
+    header p {
+      font-size: 1.2rem;
     }
 
-    .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-.gallery-item {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-}
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
+    /* ---------- Navigation ---------- */
+    nav {
+      background: #FFA500;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.8rem 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #FFD700;
+    }
 
-/* Flashing "Click Me" */
-.click-me {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  font-size: 0.9rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  animation: flash 1s infinite;
-}
-@keyframes flash {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
-}
+    /* ---------- Main Section ---------- */
+    main {
+      padding: 2rem 1rem;
+    }
+    .intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .intro h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .intro p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-/* Lightbox modal */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.lightbox-content {
-  display: flex;
-  align-items: center;
-  max-width: 90%;
-  max-height: 90%;
-  gap: 20px;
-}
-.lightbox-inner {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  max-width: 100%;
-}
-.lightbox-inner img {
-  max-width: 60vw;
-  max-height: 80vh;
-  border-radius: 8px;
-}
-.caption {
-  color: #fff;
-  max-width: 30vw;
-  font-size: 0.95rem;
-}
-.caption h3 {
-  margin-top: 0;
-  font-size: 1.3rem;
-}
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: #fff;
-  font-size: 32px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.prev, .next {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 36px;
-  cursor: pointer;
-  user-select: none;
-  padding: 10px;
-  transition: color 0.3s;
-}
-.prev:hover, .next:hover {
-  color: #22d3ee;
-}
-    
+    /* ---------- Showcase ---------- */
+    .showcase {
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+      background: #fff3e0;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    .showcase img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .showcase h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #FF8C00;
+    }
+    .showcase p {
+      font-size: 1rem;
+    }
+
+    /* ---------- Contact Form ---------- */
+    .contact {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      background: #fff3e0;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .contact h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #FF8C00;
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact input,
+    .contact textarea {
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: none;
+    }
+    .contact button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      background: #FFA500;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact button:hover {
+      background: #FFD700;
+      color: #333;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #FFA500;
+      color: #fff;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media(max-width:768px){
+      .intro h2 { font-size: 1.8rem; }
+      .showcase h3 { font-size: 1.3rem; }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="container nav">
-      <a class="logo" href="#top" aria-label="Noah MD Home">
-        <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#a78bfa"/>
-              <stop offset="100%" stop-color="#22d3ee"/>
-            </linearGradient>
-          </defs>
-          <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#g1)"/>
-          <path d="M18 44V20l10 12 10-12v24" stroke="#0b1020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Noah <span class="gradient-text">MD</span></span>
-      </a>
-      <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#photography">Photography</a>
-        <a href="#development">Development</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+    <h1>Noah MD</h1>
+    <p>Website Development Portfolio</p>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="badge"><span class="dot"></span> Hey, I'm Noah — 12 y/o creator from Bristol</span>
-          <h1>Photographer & Web <span class="gradient-text">Developer</span></h1>
-          <p class="lead">I love telling stories through bold photography and building creative, modern websites that bring ideas to life. 😁</p>
-          <div class="cta">
-            <a class="btn primary" href="#photography">See Photography</a>
-            <a class="btn" href="#development">See Development</a>
-          </div>
-          <div class="stat-row">
-            <div class="stat"><b>25+</b><br><small>Photo shoots</small></div>
-            <div class="stat"><b>150k+</b><br><small>Views across socials</small></div>
-            <div class="stat"><b>5+</b><br><small>Websites built</small></div>
-          </div>
-        </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-        <!-- PHOTO GALLERY -->
-<section id="photography">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="kicker">Photography</div>
-        <h2>Portfolio</h2>
-      </div>
-    </div>
-
-    <!-- Gallery grid -->
-    <div class="gallery-grid">
-      <div class="gallery-item" data-index="0">
-        <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=800&auto=format&fit=crop" alt="City portrait in neon lights">
-        <div class="click-me">👉 Click Me</div>
-      </div>
-      <div class="gallery-item" data-index="1">
-        <img src="https://images.unsplash.com/photo-1500043357865-c6b8827edf26?q=80&w=800&auto=format&fit=crop" alt="Skater silhouette at sunset">
-      </div>
-      <div class="gallery-item" data-index="2">
-        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" alt="Running through waves">
-      </div>
-      <div class="gallery-item" data-index="3">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Product photo glossy">
-      </div>
-      <div class="gallery-item" data-index="4">
-        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=800&auto=format&fit=crop" alt="Street photo in the rain">
-      </div>
-      <div class="gallery-item" data-index="5">
-        <img src="https://images.unsplash.com/photo-1520975922284-9d656a3cde49?q=80&w=800&auto=format&fit=crop" alt="Behind the scenes camera">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <div class="lightbox-content">
-    <button class="prev">&#10094;</button>
-    <div class="lightbox-inner">
-      <img id="lightbox-img" src="" alt="">
-      <div class="caption">
-        <h3 id="lightbox-title"></h3>
-        <p id="lightbox-desc"></p>
-      </div>
-    </div>
-    <button class="next">&#10095;</button>
-  </div>
-</div>
+  <main>
+    <section class="intro" id="about">
+      <h2>Hi! I make websites.</h2>
+      <p>I help people create professional websites for their businesses, projects, or personal brand. Below is one of my featured projects for an author.</p>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">About</div>
-            <h2>What I do</h2>
-          </div>
-        </div>
-
-        <div class="features">
-          <article class="feature">
-            <div class="pill">📸 Photography</div>
-            <h3>Portraits, street & product</h3>
-            <p>I shoot with a Canon EOS 1300D and experiment with light, texture, and motion for bold looks.</p>
-          </article>
-          <article class="feature">
-            <div class="pill">💻 Web Development</div>
-            <h3>Modern, clean websites</h3>
-            <p>I design and code responsive websites that look good on every screen and feel fresh to use.</p>
-          </article>
-        </div>
-      </div>
+    <section class="showcase" id="showcase">
+      <img src="assets/images/davidbook.jpg" alt="Author Website Screenshot">
+      <h3>Author Website Project</h3>
+      <p>This website was made for an author to showcase their books, blog, and contact details. I handled the layout, responsive design, and styling using HTML & CSS.</p>
     </section>
 
-    <!-- PHOTOGRAPHY -->
-    <section id="photography">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Photography</div>
-            <h2>Interactive portfolio</h2>
-          </div>
-          <a class="btn" href="#contact">Book a shoot</a>
-        </div>
-        <div class="masonry">
-          <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=1200&auto=format&fit=crop" alt="City portrait in neon lights"/>
-          <img src="https://images.unsplash.com/photo-1500043357865-c6b8827edf26?q=80&w=1200&auto=format&fit=crop" alt="Skater silhouette at sunset"/>
-          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" alt="Running through waves"/>
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Product photo glossy"/>
-          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1200&auto=format&fit=crop" alt="Street photo in the rain"/>
-        </div>
-      </div>
-    </section>
-
-    <!-- DEVELOPMENT -->
-    <section id="development">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Development</div>
-            <h2>Web projects</h2>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <article class="card-ui">
-            <div class="media">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="Website screenshot placeholder"/>
-            </div>
-            <div class="body">
-              <div class="pill">Featured Website</div>
-              <h3>My Project</h3>
-              <p>A clean, responsive website I designed and coded. Built to be simple, fast, and user-friendly.</p>
-              <a class="btn" href="https://your-website-link.com" target="_blank">View site</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-   <section id="contact">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Contact</div>
-            <h2>Say hi 👋</h2>
-          </div>
-        </div>
-       <div class="grid cols-3">
-  <div class="card-ui" style="grid-column: span 2">
-    <div class="body">
-      <p class="muted">Wanna chat? Send a message — I usually reply within 5 hours</p>
-
-      <!-- Updated Formspree form -->
-      <form id="contactForm" action="https://formspree.io/f/xdkdoqdz" method="POST">
-        <label for="name">Name</label><br>
-        <input id="name" name="name" required 
-               style="width:100%; margin:6px 0 12px; padding:14px; border-radius:14px; border:1px solid var(--border); background:var(--card); color:var(--fg)">
-
-        <label for="email">Email</label><br>
-        <input id="email" name="email" type="email" required
-               style="width:100%; margin:6px 0 12px; padding:14px; border-radius:14px; border:1px solid var(--border); background:var(--card); color:var(--fg)">
-
-        <label for="msg">Message</label><br>
-        <textarea id="msg" name="message" rows="5" required
-                  style="width:100%; margin:6px 0 12px; padding:14px; border-radius:14px; border:1px solid var(--border); background:var(--card); color:var(--fg)"></textarea>
-
-        <button class="btn primary" type="submit">Send</button>
+    <section class="contact" id="contact">
+      <h3>Contact Me</h3>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
       </form>
-
-      <p id="status" style="margin-top:10px;"></p>
-    </div>
-  </div>
-</div>
-
-        <script>
-const form = document.getElementById("contactForm");
-const status = document.getElementById("status");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
-
-  const response = await fetch(form.action, {
-    method: form.method,
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  });
-
-  if (response.ok) {
-    status.textContent = "✅ Thanks! Your message has been sent.";
-    form.reset();
-  } else {
-    status.textContent = "❌ Oops! Something went wrong. Try again.";
-  }
-});
-</script>
-        
+      <p style="text-align:center; font-size:0.85rem; color:#666; margin-top:0.5rem;">*This form does not submit anywhere*</p>
+    </section>
   </main>
+
+  <footer>
+    <p>© 2025 Noah MD. All rights reserved.</p>
+  </footer>
+
 </body>
-
-  <script>
-const galleryItems = document.querySelectorAll('.gallery-item');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxTitle = document.getElementById('lightbox-title');
-const lightboxDesc = document.getElementById('lightbox-desc');
-const closeBtn = document.querySelector('.lightbox .close');
-const prevBtn = document.querySelector('.lightbox .prev');
-const nextBtn = document.querySelector('.lightbox .next');
-
-const photos = [
-  { title: "Neon Portrait", desc: "A night portrait shot in the neon glow of the city." },
-  { title: "Skater at Sunset", desc: "Capturing movement and freedom at golden hour." },
-  { title: "Running Waves", desc: "Frozen motion of a runner against crashing waves." },
-  { title: "Product Glow", desc: "Studio-lit product photography with glossy textures." },
-  { title: "Rainy Streets", desc: "Street photo in the rain with moody reflections." },
-  { title: "Behind the Lens", desc: "Capturing the process of photography itself." }
-];
-
-let currentIndex = 0;
-
-function openLightbox(index) {
-  currentIndex = index;
-  const img = galleryItems[index].querySelector('img');
-  lightboxImg.src = img.src;
-  lightboxTitle.textContent = photos[index].title;
-  lightboxDesc.textContent = photos[index].desc;
-  lightbox.style.display = 'flex';
-}
-
-function closeLightbox() {
-  lightbox.style.display = 'none';
-}
-
-function showPrev() {
-  currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-  openLightbox(currentIndex);
-}
-
-function showNext() {
-  currentIndex = (currentIndex + 1) % photos.length;
-  openLightbox(currentIndex);
-}
-
-galleryItems.forEach((item, i) => {
-  item.addEventListener('click', () => openLightbox(i));
-});
-
-closeBtn.addEventListener('click', closeLightbox);
-prevBtn.addEventListener('click', showPrev);
-nextBtn.addEventListener('click', showNext);
-
-window.addEventListener('keydown', (e) => {
-  if (lightbox.style.display === 'flex') {
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrev();
-    if (e.key === 'Escape') closeLightbox();
-  }
-});
-
-// remove flashing "Click Me" after a few seconds
-setTimeout(() => {
-  document.querySelector('.click-me').style.display = 'none';
-}, 4000);
-</script>
-  
 </html>
