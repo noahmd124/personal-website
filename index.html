@@ -6,44 +6,57 @@
   <title>Arthur McTriangle</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ---------- Reset & Body ---------- */
+    /* ---------- Reset ---------- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; }
 
-    /* ---------- Header ---------- */
+    /* ---------- Header & Nav ---------- */
     header {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #4a90e2, #7b4de8);
       color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
+      flex-wrap: wrap;
     }
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+      font-weight: 700;
     }
-    header p {
-      font-size: 1.2rem;
-    }
-
-    /* ---------- Navigation ---------- */
     nav {
-      background: #FFA500;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 0.8rem 0;
+      gap: 1.2rem;
     }
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
+      padding: 0.3rem 0.6rem;
       transition: 0.3s;
     }
     nav a:hover {
       color: #FFD700;
     }
 
-    /* ---------- Main Section ---------- */
+    /* ---------- Banner ---------- */
+    .banner {
+      background: linear-gradient(135deg, #4a90e2, #7b4de8);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .banner h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+    }
+    .banner p {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ---------- Main ---------- */
     main {
       padding: 2rem 1rem;
     }
@@ -54,6 +67,7 @@
     .intro h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
+      color: #4a4a4a;
     }
     .intro p {
       font-size: 1rem;
@@ -65,30 +79,39 @@
     .showcase {
       max-width: 1000px;
       margin: 0 auto 3rem;
-      background: #fff3e0;
+      background: #f2f2ff;
       border-radius: 12px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
     }
     .showcase img {
-      max-width: 100%;
+      max-width: 400px;
+      width: 100%;
       border-radius: 8px;
-      margin-bottom: 1rem;
+      flex: 1 1 300px;
     }
-    .showcase h3 {
-      font-size: 1.5rem;
+    .showcase-content {
+      flex: 2 1 400px;
+    }
+    .showcase-content h3 {
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
-      color: #FF8C00;
+      color: #4a90e2;
     }
-    .showcase p {
+    .showcase-content p {
       font-size: 1rem;
+      line-height: 1.6;
     }
 
     /* ---------- Contact Form ---------- */
     .contact {
       max-width: 600px;
       margin: 0 auto 3rem;
-      background: #fff3e0;
+      background: #f2f2ff;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -96,7 +119,7 @@
     .contact h3 {
       text-align: center;
       margin-bottom: 1.5rem;
-      color: #FF8C00;
+      color: #7b4de8;
     }
     .contact form {
       display: flex;
@@ -115,29 +138,39 @@
       padding: 0.8rem;
       border: none;
       border-radius: 6px;
-      background: #FFA500;
+      background: #4a90e2;
       color: #fff;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
     }
     .contact button:hover {
-      background: #FFD700;
-      color: #333;
+      background: #7b4de8;
+    }
+    .contact p.note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.5rem;
     }
 
     /* ---------- Footer ---------- */
     footer {
       text-align: center;
       padding: 1.5rem;
-      background: #FFA500;
+      background: #4a90e2;
       color: #fff;
     }
 
     /* ---------- Responsive ---------- */
     @media(max-width:768px){
-      .intro h2 { font-size: 1.8rem; }
-      .showcase h3 { font-size: 1.3rem; }
+      .showcase {
+        flex-direction: column;
+        text-align: center;
+      }
+      .showcase-content h3 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -145,26 +178,31 @@
 
   <header>
     <h1>Noah MD</h1>
-    <p>My Portfolio</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#showcase">Showcase</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="banner">
+    <h2>Professional Website Development</h2>
+    <p>I design and build responsive, modern websites. Here’s a featured project for an author website.</p>
+  </div>
 
   <main>
     <section class="intro" id="about">
-      <h2>Hello, I make websites.</h2>
+      <h2>Hi! I make websites.</h2>
       <p>I help people create professional websites for their businesses, projects, or personal brand. Below is one of my featured projects for an author.</p>
     </section>
 
     <section class="showcase" id="showcase">
       <img src="assets/images/davidbook.jpg" alt="Author Website Screenshot">
-      <h3>Author Website Project</h3>
-      <p>This website was made for an author to showcase their books, blog, and contact details. I handled creating a clean, modern website to showcase the book and a
-        working blog system that updates with new posts live.</p>
+      <div class="showcase-content">
+        <h3>Author Website Project</h3>
+        <p>This website was made for an author to showcase their books, blog, and contact details. I handled creating a modern, clean website to showcase his books, 
+          and made a blog system that updates live when a new post gets published.</p>
+      </div>
     </section>
 
     <section class="contact" id="contact">
@@ -175,7 +213,7 @@
         <textarea rows="5" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
-      <p style="text-align:center; font-size:0.85rem; color:#666; margin-top:0.5rem;">*This form does not submit anywhere (yet!)*</p>
+      <p class="note">*This form does not submit anywhere*</p>
     </section>
   </main>
 
